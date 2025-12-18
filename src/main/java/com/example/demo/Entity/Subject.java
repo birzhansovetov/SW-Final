@@ -3,7 +3,8 @@ package com.example.demo.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
+import java.util.List;
+
 
 @Entity
 @Table(name = "subjects")
@@ -19,6 +20,7 @@ public class Subject {
     private String name;
 
     @ManyToMany(mappedBy = "subjects")
-    private Set<Student> students;
+
+    private List<Student> students;
 }
 

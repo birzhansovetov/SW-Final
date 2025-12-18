@@ -3,6 +3,8 @@ package com.example.demo.Entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "students")
 @Data
@@ -18,5 +20,17 @@ public class Student {
     private String lastName;
     private String email;
     private Integer age;
+    @ManyToOne
+    @JoinColumn(name = "course_id")
+    private Course course;
+
+    @ManyToMany
+    @JoinTable(
+            name = "student_subjects",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id")
+    )
+    private List<Subject> subjects;
 }
+
 
